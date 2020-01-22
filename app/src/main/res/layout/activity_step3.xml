@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B02E70BE"
+    android:orientation="vertical"
+    tools:context=".Step1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/astroneer"
+        android:text="Step 3/5"
+        android:textSize="50sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="100dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/astroneer"
+        android:gravity="center"
+        android:text="What do you want to work on?"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        android:textColor="#FFFFFF"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/b_hands_step3"
+            android:layout_width="172dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/astroneer"
+            android:background="@drawable/custom_step"
+            android:text="Hands"
+            android:textAllCaps="false"
+            android:textColor="#6E9CD2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_spine_step3"
+            android:layout_width="172dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/astroneer"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/custom_step"
+            android:text="Spine"
+            android:textAllCaps="false"
+            android:textColor="#6E9CD2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b_hands_step3" />
+
+        <Button
+            android:id="@+id/b_torso_step3"
+            android:layout_width="172dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/custom_step"
+            android:fontFamily="@font/astroneer"
+            android:text="Torso"
+            android:textAllCaps="false"
+            android:textColor="#6E9CD2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b_spine_step3" />
+
+        <Button
+            android:id="@+id/b_legs_step3"
+            android:layout_width="172dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/custom_step"
+            android:text="Legs"
+            android:textAllCaps="false"
+            android:fontFamily="@font/astroneer"
+            android:textColor="#6E9CD2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b_torso_step3" />
+
+        <ImageView
+            android:id="@+id/photo_female_step3"
+            android:layout_width="239dp"
+            android:layout_height="436dp"
+            android:layout_marginStart="360dp"
+            android:layout_marginTop="4dp"
+            android:src="@mipmap/photo_female"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="76dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="188dp"
+            android:layout_marginTop="83dp"
+            android:background="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="10dp"
+
+            android:layout_height="10dp"
+            android:layout_marginStart="260dp"
+            android:layout_marginTop="78dp"
+            android:src="@drawable/ic_remove_circle_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="126dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="189dp"
+            android:layout_marginTop="154dp"
+            android:background="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="150dp"
+            android:src="@drawable/ic_remove_circle_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="140dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="188dp"
+            android:layout_marginTop="226dp"
+            android:background="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="328dp"
+            android:layout_marginTop="207dp"
+            android:background="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="93dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="188dp"
+            android:layout_marginTop="297dp"
+            android:background="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="278dp"
+            android:layout_marginTop="292dp"
+            android:src="@drawable/ic_remove_circle_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="325dp"
+            android:layout_marginTop="203dp"
+            android:src="@drawable/ic_remove_circle_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

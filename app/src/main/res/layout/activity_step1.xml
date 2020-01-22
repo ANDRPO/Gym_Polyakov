@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B02E70BE"
+    android:orientation="vertical"
+    tools:context=".Step1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/astroneer"
+        android:text="Step 1/5"
+        android:textSize="50sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="100dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/astroneer"
+        android:gravity="center"
+        android:text="What is your purpose?"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        android:textColor="#FFFFFF"/>
+
+    <RelativeLayout
+        android:id="@+id/step1_weight_loss"
+        android:layout_width="284dp"
+        android:layout_height="77dp"
+        android:clickable="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/custom_step">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="35dp"
+            android:src="@mipmap/scale"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight loss"
+            android:fontFamily="@font/astroneer"
+            android:textSize="24sp"
+            android:textColor="#6E9CD2"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="105dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/step1_keeping_fit"
+        android:layout_width="284dp"
+        android:layout_height="77dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_step">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="35dp"
+            android:src="@mipmap/yoga"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keeping fit"
+            android:fontFamily="@font/astroneer"
+            android:textSize="24sp"
+            android:textColor="#6E9CD2"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="105dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/step1_build_muscule"
+        android:layout_width="284dp"
+        android:layout_height="77dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:background="@drawable/custom_step">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="35dp"
+            android:src="@mipmap/triceps"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Build muscle"
+            android:fontFamily="@font/astroneer"
+            android:textSize="24sp"
+            android:textColor="#6E9CD2"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="105dp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
