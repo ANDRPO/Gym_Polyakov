@@ -48,9 +48,11 @@ public class Step2 extends AppCompatActivity {
             public void onClick(View v) {
                 if(bool_female) {
                     startActivity(new Intent(getApplicationContext(), Step3.class));
+                    finish();
                 }
                 else if(bool_male){
                     startActivity(new Intent(getApplicationContext(), Step3_1.class));
+                    finish();
                 }
                 else
                     Toast.makeText(getApplicationContext(), "Пол не выбран", Toast.LENGTH_SHORT).show();

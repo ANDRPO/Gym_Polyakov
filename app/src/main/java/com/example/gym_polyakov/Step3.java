@@ -26,6 +26,7 @@ public class Step3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Step4.class));
+                finish();
             }
         });
 
@@ -33,6 +34,7 @@ public class Step3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Step4.class));
+                finish();
             }
         });
 
@@ -40,6 +42,7 @@ public class Step3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Step4.class));
+                finish();
             }
         });
 
@@ -47,6 +50,7 @@ public class Step3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Step4.class));
+                finish();
             }
         });
     }
