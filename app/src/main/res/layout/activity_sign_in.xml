@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="#B02E70BE"
+    android:orientation="vertical"
+    tools:context=".SignIn">
+
+    <ImageView
+        android:id="@+id/im_homegym_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/logologin"/>
+    <TextView
+        android:id="@+id/tv_homegym_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home\n Gym"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"/>
+
+
+    <RelativeLayout
+        android:id="@+id/view_username"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_tv">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/userpng"
+            android:layout_margin="15dp"/>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:background="#E2E2E2"/>
+        <EditText
+            android:id="@+id/et_signin_username"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:singleLine="true"
+            android:paddingStart="8dp"
+            android:textSize="24sp"
+            android:hint="Ivanov"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="55dp"
+            android:background="#00FFFFFF"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view_password"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_tv">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/passwordpng"
+            android:layout_margin="15dp"/>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:background="#E2E2E2"/>
+        <EditText
+            android:id="@+id/et_signin_password"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:paddingStart="8dp"
+            android:textSize="24sp"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:hint="⦁⦁⦁⦁⦁⦁"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="55dp"
+            android:background="#00FFFFFF"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/b_signin"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_step"
+        android:text="Sign In"
+        android:textSize="24sp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/astroneer"
+        android:textColor="#6E9CD2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_torso_step3" />
+
+    <Button
+        android:id="@+id/b_signup_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:stateListAnimator="@null"
+        android:text="@string/Sign_Up_text"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/b_skip"
+        android:layout_width="35dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:stateListAnimator="@null"
+        android:textAllCaps="false"
+        android:background="#00FFFFFF"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:text="Skip"/>
+
+
+</LinearLayout>

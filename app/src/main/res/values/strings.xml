@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Gym_Polyakov</string>
+    <string name="app_name">Polyakov Gym</string>
+    <string name="Sign_Up_text"><u>Sign Up</u></string>
 </resources>

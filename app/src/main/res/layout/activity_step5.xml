@@ -29,6 +29,7 @@
         android:textColor="#FFFFFF"/>
 
     <EditText
+        android:id="@+id/et_step5_Height"
         android:layout_marginTop="70dp"
         android:layout_width="312dp"
         android:layout_height="50dp"
@@ -44,6 +45,7 @@
         android:background="@drawable/custom_tv"/>
 
     <EditText
+        android:id="@+id/et_step5_Weight"
         android:layout_marginTop="30dp"
         android:layout_width="312dp"
         android:layout_height="50dp"

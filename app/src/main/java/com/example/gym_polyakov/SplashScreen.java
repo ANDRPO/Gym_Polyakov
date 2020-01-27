@@ -18,17 +18,15 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-//                if(!getSharedPreferences("Settings", Context.MODE_PRIVATE).getBoolean("first",false)) {
-//
-//
-//                    startActivity(new Intent(getApplicationContext(), Step1.class));
-//                    finish();
-//                    }
-                startActivity(new Intent(getApplicationContext(), Step1.class));
-                finish();
+                if (getSharedPreferences("Settings", Context.MODE_PRIVATE).getBoolean("first", false)) {
+                    startActivity(new Intent(getApplicationContext(), SignIn.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), Step1.class));
+                    finish();
                 }
 
-
-        },2000);
+            }
+        }, 2000);
     }
 }

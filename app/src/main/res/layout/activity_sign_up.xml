@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="#B02E70BE"
+    android:orientation="vertical"
+    tools:context=".SignUp">
+
+
+    <ImageView
+        android:id="@+id/im_homegym_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/logologin"/>
+    <TextView
+        android:id="@+id/tv_homegym_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home\n Gym"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"/>
+
+    <RelativeLayout
+        android:id="@+id/signup_view_username"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_tv">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="15dp"
+            android:src="@mipmap/userpng" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:background="#E2E2E2" />
+
+        <EditText
+            android:id="@+id/login_signup"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="6dp"
+            android:background="#00FFFFFF"
+            android:hint="Ivanov"
+            android:paddingStart="8dp"
+            android:singleLine="true"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/signup_view_email"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_tv">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="15dp"
+            android:src="@mipmap/message_icon" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:background="#E2E2E2" />
+
+        <EditText
+            android:id="@+id/mail_signup"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="6dp"
+            android:background="#00FFFFFF"
+            android:hint="Ivanov@mail.com"
+            android:inputType="text"
+            android:paddingStart="8dp"
+            android:singleLine="true"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/signup_view_password_first"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_tv">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="15dp"
+            android:src="@mipmap/passwordpng" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:background="#E2E2E2" />
+
+        <EditText
+            android:id="@+id/password_signup_first"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="6dp"
+            android:background="#00FFFFFF"
+            android:hint="⦁⦁⦁⦁⦁⦁"
+            android:inputType="textPassword"
+            android:paddingStart="8dp"
+            android:singleLine="true"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/signup_view_password_second"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_tv">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="15dp"
+            android:src="@mipmap/passwordpng" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:background="#E2E2E2" />
+
+        <EditText
+            android:id="@+id/password_signup_second"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="6dp"
+            android:background="#00FFFFFF"
+            android:hint="⦁⦁⦁⦁⦁⦁"
+            android:inputType="textPassword"
+            android:paddingStart="8dp"
+            android:singleLine="true"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/b_signup_signup"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_step"
+        android:text="Sign Up"
+        android:textSize="24sp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/astroneer"
+        android:textColor="#6E9CD2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_torso_step3" />
+
+    <Button
+        android:id="@+id/b_back_signup"
+        android:background="#00FFFFFF"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:stateListAnimator="@null"
+        android:textSize="16sp"
+        android:text="back"
+        android:layout_marginTop="20dp"
+        />
+
+</LinearLayout>

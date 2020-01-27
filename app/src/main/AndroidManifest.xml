@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.gym_polyakov">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -8,14 +14,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Step5"></activity>
-        <activity android:name=".Step3_1" />
-        <activity android:name=".Step4" />
-        <activity android:name=".Step3" />
-        <activity android:name=".Step2" />
-        <activity android:name=".Step1" />
-        <activity android:name=".SplashScreen">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".back_act"></activity>
+        <activity android:name=".SignUp" />
+        <activity
+            android:name=".SignIn"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Step5"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Step3_1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Step4"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Step3"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Step2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Step1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
