@@ -1,9 +1,12 @@
 package com.example.gym_polyakov;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -18,6 +21,8 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.gson.JsonElement;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -76,22 +81,52 @@ public class SignIn extends AppCompatActivity {
         b_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Network.getInstance().getApi().API_sign_in(et_username.getText().toString(), et_password.getText().toString()).enqueue(new Callback<JsonElement>() {
-                    @Override
-                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                        if(response.body().getAsString().contains("active")){
-                            Toast.makeText(getApplicationContext(),"Пользователь уже авторизован",Toast.LENGTH_SHORT);
+
+                if (!et_username.getText().toString().isEmpty() && !et_password.getText().toString().isEmpty()) {
+                    Network.getInstance().getApi().API_sign_in(et_username.getText().toString(), et_password.getText().toString()).enqueue(new Callback<JsonElement>() {
+                        @Override
+                        public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+
+                            try {
+                                if (response.isSuccessful()) {
+                                    if(response.body().toString().contains("token")){
+                                        SharedPreferences preferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = preferences.edit();
+                                        editor.putString("token",response.body().getAsJsonObject().get("notice").getAsJsonObject().get("token").toString());
+                                        editor.apply();
+                                        Log.e("RESPONCE TOKEN", response.body().getAsJsonObject().get("notice").getAsJsonObject().get("token").toString());
+                                        startActivity(new Intent(getApplicationContext(), back_act.class));
+                                    }
+                                    else if(response.body().toString().contains("active")){
+                                        Toast.makeText(getApplicationContext(),"Пользователь уже авторизован",Toast.LENGTH_SHORT).show();
+                                    }
+                                    else if(response.body().toString().contains("Error username or password")){
+                                        Toast.makeText(getApplicationContext(),"Неверные логин или пароль",Toast.LENGTH_SHORT).show();
+                                    }
+                                    else{
+                                        Toast.makeText(getApplicationContext(),"Произошла ошибка", Toast.LENGTH_SHORT).show();
+                                        Log.e("ERROR RESPONCE SIGN IN", response.body().toString());
+                                    }
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(),"Произошла ошибка", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (Exception e) {
+                                Log.e("EXCEPTION RESPONCE SIGN IN", e.toString());
+                                e.printStackTrace();
+                            }
                         }
-                        else{
 
+                        @Override
+                        public void onFailure(Call<JsonElement> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(),"Произошла ошибка", Toast.LENGTH_SHORT).show();
+                            Log.e("ERROR RESPONCE SIGN IN", call.toString() + " AND " + t.toString());
                         }
-                    }
-
-                    @Override
-                    public void onFailure(Call<JsonElement> call, Throwable t) {
-
-                    }
-                });
+                    });
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Заполнены не все поля", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

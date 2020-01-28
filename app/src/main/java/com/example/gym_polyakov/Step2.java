@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class Step2 extends AppCompatActivity {
     public static Boolean bool_female = false;
     public static Boolean bool_male = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ public class Step2 extends AppCompatActivity {
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bool_male){
+                if (bool_male) {
                     bool_male = false;
                 }
                 bool_female = true;
@@ -34,7 +35,7 @@ public class Step2 extends AppCompatActivity {
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bool_female){
+                if (bool_female) {
                     bool_female = false;
                 }
                 bool_male = true;
@@ -46,15 +47,13 @@ public class Step2 extends AppCompatActivity {
         next_step2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bool_female) {
+                if (bool_female) {
                     startActivity(new Intent(getApplicationContext(), Step3.class));
                     finish();
-                }
-                else if(bool_male){
+                } else if (bool_male) {
                     startActivity(new Intent(getApplicationContext(), Step3_1.class));
                     finish();
-                }
-                else
+                } else
                     Toast.makeText(getApplicationContext(), "Пол не выбран", Toast.LENGTH_SHORT).show();
             }
         });

@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/im_homegym_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="165dp"
         android:layout_marginTop="10dp"
         android:src="@mipmap/logologin"/>
     <TextView
@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Home\n Gym"
         android:gravity="center"
+        android:layout_marginTop="-50dp"
         android:textColor="#FFFFFF"
         android:textSize="50sp"/>
 

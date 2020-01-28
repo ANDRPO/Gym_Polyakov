@@ -18,8 +18,8 @@ public interface Api {
             @Query("username") String Username,
             @Query("email") String Email,
             @Query("password") String Password,
-            @Query("Weight") String Weight,
-            @Query("Height") String Height);
+            @Query("weight") String Weight,
+            @Query("height") String Height);
 
     @POST("signout?")
     Call<JsonElement> API_sign_out(
