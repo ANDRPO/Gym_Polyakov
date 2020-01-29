@@ -1,12 +1,12 @@
-package com.example.gym_polyakov;
+package com.example.gym_polyakov.steps;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.gym_polyakov.R;
 
 public class Step1 extends AppCompatActivity {
 

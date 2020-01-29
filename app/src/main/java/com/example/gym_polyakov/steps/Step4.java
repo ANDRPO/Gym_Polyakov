@@ -1,4 +1,4 @@
-package com.example.gym_polyakov;
+package com.example.gym_polyakov.steps;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.gym_polyakov.R;
 
 public class Step4 extends AppCompatActivity {
 

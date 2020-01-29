@@ -2,7 +2,6 @@ package com.example.gym_polyakov;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -91,9 +90,9 @@ public class SignUp extends AppCompatActivity {
                 } else {
                     if (et_user.getText().toString().isEmpty() || et_mail.getText().toString().isEmpty() || et_pass_first.getText().toString().isEmpty() || et_pass_second.getText().toString().isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Не все поля заполнены", Toast.LENGTH_SHORT).show();
-                    } else if (!et_mail.getText().toString().contains("@")) {
+                    } else if (check_email(et_mail.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "Некорректный E-mail", Toast.LENGTH_SHORT).show();
-                    } else if (!et_pass_first.getText().toString().equals(et_pass_second.getText().toString())) {
+                    } else if (check_password(et_pass_first.getText().toString(), et_pass_second.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "Пароли не совпадают", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Произошла ошибка", Toast.LENGTH_SHORT).show();
@@ -132,6 +131,26 @@ public class SignUp extends AppCompatActivity {
                 finish();
             }
         }, 800);
-
     }
+
+    public Boolean check_email(String email){
+        if(email.contains("@")){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public Boolean check_password(String password_first, String password_second){
+        if(password_first.equals(password_second)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+
+
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Polyakov Gym</string>
     <string name="Sign_Up_text"><u>Sign Up</u></string>
+    <string name="title_activity_bottom_navigation_menu">BottomNavigationMenu</string>
 </resources>

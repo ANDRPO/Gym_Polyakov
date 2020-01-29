@@ -95,7 +95,7 @@ public class SignIn extends AppCompatActivity {
                                         editor.putString("token",response.body().getAsJsonObject().get("notice").getAsJsonObject().get("token").toString());
                                         editor.apply();
                                         Log.e("RESPONCE TOKEN", response.body().getAsJsonObject().get("notice").getAsJsonObject().get("token").toString());
-                                        startActivity(new Intent(getApplicationContext(), back_act.class));
+                                        startActivity(new Intent(getApplicationContext(), BottomNavigationMenu.class));
                                     }
                                     else if(response.body().toString().contains("active")){
                                         Toast.makeText(getApplicationContext(),"Пользователь уже авторизован",Toast.LENGTH_SHORT).show();
@@ -130,6 +130,28 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
+        b_skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (!et_username.getText().toString().isEmpty()) {
+                        Network.getInstance().getApi().API_sign_out(et_username.getText().toString()).enqueue(new Callback<JsonElement>() {
+                            @Override
+                            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                                Log.e("SUCCESS OUT", "SUCCESS OUT");
+                            }
+
+                            @Override
+                            public void onFailure(Call<JsonElement> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
     }

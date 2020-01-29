@@ -16,28 +16,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".back_act"></activity>
+        <activity
+            android:name=".BottomNavigationMenu"
+            android:label="@string/title_activity_bottom_navigation_menu"></activity>
+        <activity android:name=".back_act" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".SignIn"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Step5"
+            android:name=".steps.Step5"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Step3_1"
+            android:name=".steps.Step3_1"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Step4"
+            android:name=".steps.Step4"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Step3"
+            android:name=".steps.Step3"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Step2"
+            android:name=".steps.Step2"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Step1"
+            android:name=".steps.Step1"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"

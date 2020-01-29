@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#B02E70BE"
     android:orientation="vertical"
-    tools:context=".Step1">
+    tools:context=".steps.Step1">
 
     <TextView
         android:layout_width="wrap_content"

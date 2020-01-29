@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_plan"
+        android:icon="@drawable/icon_plan"
+        android:title="Plan" />
+
+    <item
+        android:id="@+id/navigation_lessons"
+        android:icon="@drawable/icon_lessons"
+        android:title="Lessons" />
+
+    <item
+        android:id="@+id/navigation_reports"
+        android:icon="@drawable/icon_reports"
+        android:title="Reports" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/icon_profile"
+        android:title="Profile" />
+
+</menu>
