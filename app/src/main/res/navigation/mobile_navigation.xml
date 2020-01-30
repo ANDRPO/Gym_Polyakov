@@ -2,30 +2,30 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    android:id="@+id/mobile_navigations"
+    app:startDestination="@id/navigation_plan">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.gym_polyakov.ui.home.LessonsFragment"
+        android:id="@+id/navigation_lessons"
+        android:name="com.example.gym_polyakov.ui.lessons.LessonsFragment"
         android:label="Lessons"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_lessons" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_plan"
         android:name="com.example.gym_polyakov.ui.plan.PlanFragment"
         android:label="Plan"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_plan" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.gym_polyakov.ui.notifications.ProfileFragment"
+        android:id="@+id/navigation_profile"
+        android:name="com.example.gym_polyakov.ui.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_reports"
         android:name="com.example.gym_polyakov.ui.reports.ReportsFragment"
         android:label="Reports"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_reports" />
 </navigation>
