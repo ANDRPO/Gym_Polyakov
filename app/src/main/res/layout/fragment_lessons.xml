@@ -1,21 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="#FF0000"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
 
-    <TextView
-        android:id="@+id/text_home"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="ASDADSASDASDASD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
+        app:tabBackground="@drawable/custom_tabcolor"
+        app:tabMode="fixed"
+        app:tabIndicatorHeight="0dp"
+        app:tabRippleColor="#00FFFFFF"
+        app:tabSelectedTextColor="@android:color/white">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_Hands"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="Hands" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_Spine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spine" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_Torso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Torso" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_Legs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Legs" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_lessons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"/>
+
+</LinearLayout>

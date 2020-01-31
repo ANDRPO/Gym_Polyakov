@@ -18,9 +18,9 @@ import com.example.gym_polyakov.R;
 
 public class PlanFragment extends Fragment {
 
-    public View container_from_top_animate;
-    public View container_from_visivility;
-    public boolean swipeup = false;
+    private View container_from_top_animate;
+    private View container_from_visivility;
+    private boolean swipeup = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -31,23 +31,32 @@ public class PlanFragment extends Fragment {
 
         container_from_top_animate.setOnTouchListener(new OnSwipeTouchListener(getContext()){
             @Override
-            public void onSwipeUp(){
+            public void onSwipeDown(){
                 if(swipeup) {
-                    container_from_top_animate.animate().translationYBy(200).setDuration(400);
-                    container_from_visivility.animate().alpha(1).setDuration(500);
-                    swipeup = !swipeup;
+                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
+                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
+                    if(container_from_top_animate.getY() == 190.0) {
+                        swipeup = false;
+                        container_from_top_animate.animate().translationYBy(200).setDuration(400);
+                        container_from_visivility.animate().alpha(1).setDuration(500);
+                    }
                 }
-                Log.e("BALDESH", "UP");
+                Log.e("BALDESH", "DOWN");
             }
 
             @Override
-            public void onSwipeDown(){
+            public void onSwipeUp(){
                 if(!swipeup) {
-                    container_from_top_animate.animate().translationYBy(-200).setDuration(400);
-                    container_from_visivility.animate().alpha(0).setDuration(500);
-                    swipeup = !swipeup;
+
+                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
+                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
+                    if(container_from_top_animate.getY() == 390.0) {
+                        swipeup = true;
+                        container_from_top_animate.animate().translationYBy(-200).setDuration(400);
+                        container_from_visivility.animate().alpha(0).setDuration(500);
+                    }
                 }
-                Log.e("BALDESH", "DOWN");
+                Log.e("BALDESH", "UP");
             }
         });
 

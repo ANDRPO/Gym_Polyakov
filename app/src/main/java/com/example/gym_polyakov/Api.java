@@ -8,12 +8,12 @@ import retrofit2.http.Query;
 
 public interface Api {
 
-    @POST("signin?")
+    @POST("signin")
     Call<JsonElement> API_sign_in(
             @Query("username") String Username,
             @Query("password") String Password);
 
-    @POST("signup?")
+    @POST("signup")
     Call<JsonElement> API_sign_up(
             @Query("username") String Username,
             @Query("email") String Email,
@@ -21,7 +21,7 @@ public interface Api {
             @Query("weight") String Weight,
             @Query("height") String Height);
 
-    @POST("signout?")
+    @POST("signout")
     Call<JsonElement> API_sign_out(
             @Query("username") String Username
     );

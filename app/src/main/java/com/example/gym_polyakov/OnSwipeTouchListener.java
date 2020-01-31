@@ -17,7 +17,6 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
     }
 
     public void onSwipeDown(){
-
     }
 
     public boolean onTouch(View v, MotionEvent event) {
@@ -39,9 +38,9 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
             float distanceX = e2.getX() - e1.getX();
             float distanceY = e2.getY() - e1.getY();
             if (Math.abs(distanceY) > Math.abs(distanceX) && Math.abs(distanceY) > SWIPE_DISTANCE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
-                if(distanceY > 0)
+                if(distanceY < 0)
                     onSwipeUp();
-                else if(distanceY < 0)
+                else if(distanceY > 0)
                     onSwipeDown();
                 return true;
             }
