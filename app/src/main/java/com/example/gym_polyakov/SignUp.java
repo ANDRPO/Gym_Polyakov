@@ -1,6 +1,7 @@
 package com.example.gym_polyakov;
 
 import android.content.Context;
+import android.content.Entity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,8 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.gym_polyakov.DataBase.AppDataBase;
+import com.example.gym_polyakov.DataBase.Users;
 import com.google.gson.JsonElement;
 
 import retrofit2.Call;
@@ -47,7 +51,20 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!et_user.getText().toString().isEmpty() && !et_mail.getText().toString().isEmpty() && (et_pass_first.getText().toString().equals(et_pass_second.getText().toString())) && et_mail.getText().toString().contains("@") && !et_pass_first.getText().toString().isEmpty() && !et_pass_second.getText().toString().isEmpty()) {
-                    Network.getInstance().getApi().API_sign_up(
+
+                    AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "database").allowMainThreadQueries().build();
+                    Users users = new Users();
+                    users.username = et_user.getText().toString();
+                    users.email = et_mail.getText().toString();
+                    users.password = et_pass_second.getText().toString();
+                    users.height = getSharedPreferences("Settings", Context.MODE_PRIVATE).getFloat("height", 0);
+                    users.weight = getSharedPreferences("Settings", Context.MODE_PRIVATE).getFloat("weight", 0);
+                    users.gender = getSharedPreferences("Settings", Context.MODE_PRIVATE).getBoolean("male", false);
+
+                    db.users_dao().insert(users);
+                    onBackPressed();
+
+                    /*Network.getInstance().getApi().API_sign_up(
                             et_user.getText().toString(),
                             et_mail.getText().toString(),
                             et_pass_first.getText().toString(),
@@ -86,7 +103,7 @@ public class SignUp extends AppCompatActivity {
                         public void onFailure(Call<JsonElement> call, Throwable t) {
                             Toast.makeText(getApplicationContext(), "Произошла ошибка", Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    });*/
                 } else {
                     if (et_user.getText().toString().isEmpty() || et_mail.getText().toString().isEmpty() || et_pass_first.getText().toString().isEmpty() || et_pass_second.getText().toString().isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Не все поля заполнены", Toast.LENGTH_SHORT).show();

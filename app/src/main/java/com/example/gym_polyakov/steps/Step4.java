@@ -73,7 +73,5 @@ public class Step4 extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 }

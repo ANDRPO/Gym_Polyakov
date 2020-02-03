@@ -6,6 +6,15 @@
     android:orientation="vertical"
     android:background="#FFFFFF">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Lessons"
+        android:gravity="center"
+        android:background="@drawable/custom_top"
+        android:textSize="24dp"
+        android:textColor="#FFFFFF"/>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"

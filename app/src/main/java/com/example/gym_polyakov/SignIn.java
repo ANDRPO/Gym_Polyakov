@@ -2,6 +2,7 @@ package com.example.gym_polyakov;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -20,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.gym_polyakov.DataBase.AppDataBase;
+import com.example.gym_polyakov.DataBase.Users;
 import com.google.gson.JsonElement;
 
 import java.util.Objects;
@@ -35,6 +38,7 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        final AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "database").allowMainThreadQueries().build();
 
         final Button b_signup_activity = findViewById(R.id.b_signup_activity);
         Button b_skip = findViewById(R.id.b_skip);
@@ -70,11 +74,10 @@ public class SignIn extends AppCompatActivity {
                         Animatoo.animateFade(SignIn.this);
                         finish();
                     }
-                },800);
+                }, 800);
 
             }
         });
-
 
 
         Button b_sign_in = findViewById(R.id.b_signin);
@@ -82,7 +85,22 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!et_username.getText().toString().isEmpty() && !et_password.getText().toString().isEmpty()) {
+                if (!et_password.getText().toString().isEmpty() && !et_username.getText().toString().isEmpty()) {
+                    Users users = new Users();
+                    if(db.users_dao().getUser(et_username.getText().toString(), et_password.getText().toString()) != null) {
+                        users = db.users_dao().getUser(et_username.getText().toString(), et_password.getText().toString());
+                        startActivity(new Intent(getApplicationContext(), BottomNavigationMenu.class));
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Такого пользователя не существует", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Не все поля заполнены", Toast.LENGTH_SHORT).show();
+                }
+
+                /*if (!et_username.getText().toString().isEmpty() && !et_password.getText().toString().isEmpty()) {
                     Network.getInstance().getApi().API_sign_in(et_username.getText().toString(), et_password.getText().toString()).enqueue(new Callback<JsonElement>() {
                         @Override
                         public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -126,7 +144,9 @@ public class SignIn extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Заполнены не все поля", Toast.LENGTH_SHORT).show();
-                }
+                }*/
+
+
             }
         });
 
@@ -134,7 +154,19 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    if (!et_username.getText().toString().isEmpty()) {
+
+                    for (Users users : db.users_dao().getAll()) {
+                        Log.e("DATABASE ID", String.valueOf(users.id));
+                        Log.e("DATABASE USERNAME", users.username);
+                        Log.e("DATABASE PASSWORD", users.password);
+                        Log.e("DATABASE EMAIL", users.email);
+                        Log.e("DATABASE GENDER", String.valueOf(users.gender));
+                        Log.e("DATABASE HEIGHT", String.valueOf(users.height));
+                        Log.e("DATABASE WEIGHT", String.valueOf(users.weight));
+
+                    }
+
+                    /*if (!et_username.getText().toString().isEmpty()) {
                         Network.getInstance().getApi().API_sign_out(et_username.getText().toString()).enqueue(new Callback<JsonElement>() {
                             @Override
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -146,7 +178,7 @@ public class SignIn extends AppCompatActivity {
 
                             }
                         });
-                    }
+                    }*/
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
