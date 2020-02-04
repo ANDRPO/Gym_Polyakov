@@ -6,12 +6,9 @@
         <item name="colorPrimary">#1592E6</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">#00FFFFFF</item>
+        <item name="android:textCursorDrawable">@color/Black</item>
         <item name="android:fontFamily">@font/astroneer</item>
         <item name="android:windowFullscreen">true</item>
-    </style>
-
-    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabTextAppearance">@style/MyCustomTextAppearance</item>
     </style>
 
     <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">

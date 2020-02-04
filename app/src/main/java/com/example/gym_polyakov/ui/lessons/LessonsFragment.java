@@ -34,16 +34,45 @@ public class LessonsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_lessons, null);
 
+        final List<String> Urls_list = new ArrayList<>();
 
-        ViewPager viewPager = view.findViewById(R.id.view_pager_lessons);
-        tabLayout = view.findViewById(R.id.tab_layout);
-        pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
-        pageAdapter.addTitle("Hands");
-        pageAdapter.addTitle("Spine");
-        pageAdapter.addTitle("Torso");
-        pageAdapter.addTitle("Legs");
-        viewPager.setAdapter(pageAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+        try {
+            Network.getInstance().getApi().API_lessons().enqueue(new Callback<JsonElement>() {
+                @Override
+                public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                    try {
+                        if(response.isSuccessful()){
+                            for(int i = 0; i < response.body().getAsJsonArray().size();i++){
+                                Urls_list.add(response.body().getAsJsonArray().get(i).getAsJsonObject().get("url").toString());
+                            }
+
+                            ViewPager viewPager = view.findViewById(R.id.view_pager_lessons);
+                            tabLayout = view.findViewById(R.id.tab_layout);
+                            pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount(), Urls_list);
+                            pageAdapter.addTitle("Hands");
+                            pageAdapter.addTitle("Spine");
+                            pageAdapter.addTitle("Torso");
+                            pageAdapter.addTitle("Legs");
+                            viewPager.setAdapter(pageAdapter);
+                            tabLayout.setupWithViewPager(viewPager);
+
+                        }
+                        else{
+                            Toast.makeText(getActivity(),"Не удалось получить список видеоуроков", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JsonElement> call, Throwable t) {
+
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return view;
     }

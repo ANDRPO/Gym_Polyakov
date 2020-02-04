@@ -9,30 +9,37 @@ import com.example.gym_polyakov.fragmentslessons.HandsFragment;
 import com.example.gym_polyakov.fragmentslessons.LegsFragment;
 import com.example.gym_polyakov.fragmentslessons.SpineFragment;
 import com.example.gym_polyakov.fragmentslessons.TorsoFragment;
+import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
     private int count;
     private List<String> PageTitles = new ArrayList<>();
-    public PageAdapter(FragmentManager fm, int count) {
+    private List<String> Urls_list;
+    public PageAdapter(FragmentManager fm, int count, final List<String> Urls_list) {
         super(fm);
         this.count = count;
+        this.Urls_list = Urls_list;
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new HandsFragment();
+                return new HandsFragment(Urls_list);
             case 1:
-                return new SpineFragment();
+                return new SpineFragment(Urls_list);
             case 2:
-                return new TorsoFragment();
+                return new TorsoFragment(Urls_list);
             case 3:
-                return new LegsFragment();
+                return new LegsFragment(Urls_list);
             default:
                 return null;
         }
@@ -52,5 +59,8 @@ public class PageAdapter extends FragmentPagerAdapter {
     public void addTitle(String title){
         PageTitles.add(title);
     }
+
+
+
 
 }

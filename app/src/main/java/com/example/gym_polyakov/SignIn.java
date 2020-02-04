@@ -81,8 +81,7 @@ public class SignIn extends AppCompatActivity {
         });
 
 
-        Button b_sign_in = findViewById(R.id.b_signin);
-        b_sign_in.setOnClickListener(new View.OnClickListener() {
+        b_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -115,6 +114,7 @@ public class SignIn extends AppCompatActivity {
                                         editor.apply();
                                         Log.e("RESPONCE TOKEN", response.body().getAsJsonObject().get("notice").getAsJsonObject().get("token").toString());
                                         startActivity(new Intent(getApplicationContext(), BottomNavigationMenu.class));
+                                        finish();
                                     }
                                     else if(response.body().toString().contains("active")){
                                         Toast.makeText(getApplicationContext(),"Пользователь уже авторизован",Toast.LENGTH_SHORT).show();
