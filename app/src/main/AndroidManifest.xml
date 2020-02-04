@@ -17,13 +17,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities_plan.Activity_legs"></activity>
+        <activity android:name=".Activities_plan.Activity_legs"/>
         <activity android:name=".Activities_plan.Activity_torso" />
         <activity android:name=".Activities_plan.Activity_spine" />
         <activity android:name=".Activities_plan.Activity_hands" />
         <activity
             android:name=".BottomNavigationMenu"
-            android:label="@string/title_activity_bottom_navigation_menu" />
+            android:label="@string/title_activity_bottom_navigation_menu" >
+        </activity>
         <activity android:name=".back_act" />
         <activity android:name=".SignUp" />
         <activity

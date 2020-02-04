@@ -52,7 +52,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 if (!et_user.getText().toString().isEmpty() && !et_mail.getText().toString().isEmpty() && (et_pass_first.getText().toString().equals(et_pass_second.getText().toString())) && et_mail.getText().toString().contains("@") && !et_pass_first.getText().toString().isEmpty() && !et_pass_second.getText().toString().isEmpty()) {
 
-                    AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "database").allowMainThreadQueries().build();
+                    /*AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "database").allowMainThreadQueries().build();
                     Users users = new Users();
                     users.username = et_user.getText().toString();
                     users.email = et_mail.getText().toString();
@@ -62,9 +62,9 @@ public class SignUp extends AppCompatActivity {
                     users.gender = getSharedPreferences("Settings", Context.MODE_PRIVATE).getBoolean("male", false);
 
                     db.users_dao().insert(users);
-                    onBackPressed();
+                    onBackPressed();*/
 
-                    /*Network.getInstance().getApi().API_sign_up(
+                    Network.getInstance().getApi().API_sign_up(
                             et_user.getText().toString(),
                             et_mail.getText().toString(),
                             et_pass_first.getText().toString(),
@@ -103,7 +103,7 @@ public class SignUp extends AppCompatActivity {
                         public void onFailure(Call<JsonElement> call, Throwable t) {
                             Toast.makeText(getApplicationContext(), "Произошла ошибка", Toast.LENGTH_SHORT).show();
                         }
-                    });*/
+                    });
                 } else {
                     if (et_user.getText().toString().isEmpty() || et_mail.getText().toString().isEmpty() || et_pass_first.getText().toString().isEmpty() || et_pass_second.getText().toString().isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Не все поля заполнены", Toast.LENGTH_SHORT).show();

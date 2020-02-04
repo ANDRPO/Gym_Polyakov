@@ -3,6 +3,7 @@ package com.example.gym_polyakov;
 import com.google.gson.JsonElement;
 
 import retrofit2.Call;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -23,6 +24,19 @@ public interface Api {
 
     @POST("signout")
     Call<JsonElement> API_sign_out(
-            @Query("username") String Username
-    );
+            @Query("username") String Username);
+
+    @GET("lessons")
+    Call<JsonElement> API_lessons();
+
+    @POST("profile")
+    Call<JsonElement> API_prifole(
+            @Query("token") String Token);
+
+    @POST("editeprofile")
+    Call<JsonElement> API_editprofile(
+            @Query("token") String Token,
+            @Query("weight") String Weight,
+            @Query("height") String Height);
+
 }

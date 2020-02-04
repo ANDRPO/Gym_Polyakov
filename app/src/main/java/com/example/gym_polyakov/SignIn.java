@@ -57,6 +57,7 @@ public class SignIn extends AppCompatActivity {
             @SuppressLint("WrongConstant")
             @Override
             public void onClick(View v) {
+
                 relat_username.animate().alpha(0).translationYBy(-100).setDuration(1000);
                 relat_password.animate().alpha(0).translationYBy(-40).setDuration(1000);
                 b_signup_activity.animate().alpha(0).setDuration(1000);
@@ -85,7 +86,7 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!et_password.getText().toString().isEmpty() && !et_username.getText().toString().isEmpty()) {
+                /*if (!et_password.getText().toString().isEmpty() && !et_username.getText().toString().isEmpty()) {
                     Users users = new Users();
                     if(db.users_dao().getUser(et_username.getText().toString(), et_password.getText().toString()) != null) {
                         users = db.users_dao().getUser(et_username.getText().toString(), et_password.getText().toString());
@@ -98,9 +99,9 @@ public class SignIn extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Не все поля заполнены", Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
-                /*if (!et_username.getText().toString().isEmpty() && !et_password.getText().toString().isEmpty()) {
+                if (!et_username.getText().toString().isEmpty() && !et_password.getText().toString().isEmpty()) {
                     Network.getInstance().getApi().API_sign_in(et_username.getText().toString(), et_password.getText().toString()).enqueue(new Callback<JsonElement>() {
                         @Override
                         public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -144,7 +145,7 @@ public class SignIn extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Заполнены не все поля", Toast.LENGTH_SHORT).show();
-                }*/
+                }
 
 
             }
@@ -155,7 +156,7 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View v) {
                 try {
 
-                    for (Users users : db.users_dao().getAll()) {
+                    /*for (Users users : db.users_dao().getAll()) {
                         Log.e("DATABASE ID", String.valueOf(users.id));
                         Log.e("DATABASE USERNAME", users.username);
                         Log.e("DATABASE PASSWORD", users.password);
@@ -164,9 +165,9 @@ public class SignIn extends AppCompatActivity {
                         Log.e("DATABASE HEIGHT", String.valueOf(users.height));
                         Log.e("DATABASE WEIGHT", String.valueOf(users.weight));
 
-                    }
+                    }*/
 
-                    /*if (!et_username.getText().toString().isEmpty()) {
+                    if (!et_username.getText().toString().isEmpty()) {
                         Network.getInstance().getApi().API_sign_out(et_username.getText().toString()).enqueue(new Callback<JsonElement>() {
                             @Override
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -178,7 +179,7 @@ public class SignIn extends AppCompatActivity {
 
                             }
                         });
-                    }*/
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

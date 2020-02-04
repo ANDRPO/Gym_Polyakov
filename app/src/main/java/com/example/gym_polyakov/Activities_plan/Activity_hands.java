@@ -12,5 +12,6 @@ public class Activity_hands extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hands);
+
     }
 }

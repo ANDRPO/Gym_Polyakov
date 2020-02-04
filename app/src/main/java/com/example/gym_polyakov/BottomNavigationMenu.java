@@ -1,5 +1,6 @@
 package com.example.gym_polyakov;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -14,11 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class BottomNavigationMenu extends AppCompatActivity {
-
+    public static Context GLOBAL_CONTEXT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation_menu);
+
+        GLOBAL_CONTEXT = getApplicationContext();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -29,19 +32,19 @@ public class BottomNavigationMenu extends AppCompatActivity {
                     case R.id.navigation_plan:
                         Log.e("itemID", menuItem.toString() + "  ASDANDASD  " + menuItem.getItemId());
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PlanFragment()).commit();
-                        return true;
+                        break;
                     case R.id.navigation_lessons:
                         Log.e("itemID", menuItem.toString() + "  ASDANDASD  " + menuItem.getItemId());
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new LessonsFragment()).commit();
-                        return true;
+                        break;
                     case R.id.navigation_reports:
                         Log.e("itemID", menuItem.toString() + "  ASDANDASD  " + menuItem.getItemId());
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ReportsFragment()).commit();
-                        return true;
+                        break;
                     case R.id.navigation_profile:
                         Log.e("itemID", menuItem.toString() + "  ASDANDASD  " + menuItem.getItemId());
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileFragment()).commit();
-                        return true;
+                        break;
                 }
                 return true;
             }
