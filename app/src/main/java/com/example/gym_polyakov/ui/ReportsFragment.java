@@ -1,4 +1,4 @@
-package com.example.gym_polyakov.ui.reports;
+package com.example.gym_polyakov.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

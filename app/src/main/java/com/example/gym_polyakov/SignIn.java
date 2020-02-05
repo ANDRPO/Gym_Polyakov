@@ -111,6 +111,7 @@ public class SignIn extends AppCompatActivity {
                                         SharedPreferences preferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = preferences.edit();
                                         editor.putString("token",response.body().getAsJsonObject().get("notice").getAsJsonObject().get("token").toString());
+                                        editor.putString("username",et_username.getText().toString());
                                         editor.apply();
                                         Log.e("RESPONCE TOKEN", response.body().getAsJsonObject().get("notice").getAsJsonObject().get("token").toString());
                                         startActivity(new Intent(getApplicationContext(), BottomNavigationMenu.class));

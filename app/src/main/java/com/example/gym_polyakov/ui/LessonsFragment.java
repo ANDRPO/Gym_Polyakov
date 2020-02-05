@@ -1,9 +1,7 @@
-package com.example.gym_polyakov.ui.lessons;
+package com.example.gym_polyakov.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -30,12 +28,9 @@ public class LessonsFragment extends Fragment {
     private TabLayout tabLayout;
     private PageAdapter pageAdapter;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_lessons, null);
+    private final List<String> Urls_list = new ArrayList<>();
 
-        final List<String> Urls_list = new ArrayList<>();
-
+    public void onCreate(){
         try {
             Network.getInstance().getApi().API_lessons().enqueue(new Callback<JsonElement>() {
                 @Override
@@ -45,16 +40,6 @@ public class LessonsFragment extends Fragment {
                             for(int i = 0; i < response.body().getAsJsonArray().size();i++){
                                 Urls_list.add(response.body().getAsJsonArray().get(i).getAsJsonObject().get("url").toString());
                             }
-
-                            ViewPager viewPager = view.findViewById(R.id.view_pager_lessons);
-                            tabLayout = view.findViewById(R.id.tab_layout);
-                            pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount(), Urls_list);
-                            pageAdapter.addTitle("Hands");
-                            pageAdapter.addTitle("Spine");
-                            pageAdapter.addTitle("Torso");
-                            pageAdapter.addTitle("Legs");
-                            viewPager.setAdapter(pageAdapter);
-                            tabLayout.setupWithViewPager(viewPager);
 
                         }
                         else{
@@ -73,6 +58,22 @@ public class LessonsFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        final View view = inflater.inflate(R.layout.fragment_lessons, null);
+
+        ViewPager viewPager = view.findViewById(R.id.view_pager_lessons);
+        tabLayout = view.findViewById(R.id.tab_layout);
+        pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount(), Urls_list);
+        pageAdapter.addTitle("Hands");
+        pageAdapter.addTitle("Spine");
+        pageAdapter.addTitle("Torso");
+        pageAdapter.addTitle("Legs");
+        viewPager.setAdapter(pageAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
         return view;
     }

@@ -1,14 +1,13 @@
 package com.example.gym_polyakov;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.gym_polyakov.ui.lessons.LessonsFragment;
-import com.example.gym_polyakov.ui.profile.ProfileFragment;
-import com.example.gym_polyakov.ui.plan.PlanFragment;
-import com.example.gym_polyakov.ui.reports.ReportsFragment;
+import com.example.gym_polyakov.ui.LessonsFragment;
+import com.example.gym_polyakov.ui.ProfileFragment;
+import com.example.gym_polyakov.ui.PlanFragment;
+import com.example.gym_polyakov.ui.ReportsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;

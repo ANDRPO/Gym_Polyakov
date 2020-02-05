@@ -21,7 +21,7 @@ import java.util.List;
 
 public class LegsFragment extends Fragment {
 
-    List<String> urls = new ArrayList<>();
+    private List<String> urls = new ArrayList<>();
 
     public LegsFragment(List<String> urls) {
         for (int i = 10; i < 18; i++) {

@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_lessons"
-        android:name="com.example.gym_polyakov.ui.lessons.LessonsFragment"
+        android:name="com.example.gym_polyakov.ui.LessonsFragment"
         android:label="Lessons"
         tools:layout="@layout/fragment_lessons" />
 
     <fragment
         android:id="@+id/navigation_plan"
-        android:name="com.example.gym_polyakov.ui.plan.PlanFragment"
+        android:name="com.example.gym_polyakov.ui.PlanFragment"
         android:label="Plan"
         tools:layout="@layout/fragment_plan" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.gym_polyakov.ui.profile.ProfileFragment"
+        android:name="com.example.gym_polyakov.ui.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_reports"
-        android:name="com.example.gym_polyakov.ui.reports.ReportsFragment"
+        android:name="com.example.gym_polyakov.ui.ReportsFragment"
         android:label="Reports"
         tools:layout="@layout/fragment_reports" />
 </navigation>
