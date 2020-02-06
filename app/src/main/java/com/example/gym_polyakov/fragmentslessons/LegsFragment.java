@@ -24,8 +24,10 @@ public class LegsFragment extends Fragment {
     private List<String> urls = new ArrayList<>();
 
     public LegsFragment(List<String> urls) {
-        for (int i = 10; i < 18; i++) {
-            this.urls.add(urls.get(i));
+        if (!urls.isEmpty()) {
+            for (int i = 10; i < 18; i++) {
+                this.urls.add(urls.get(i));
+            }
         }
     }
 

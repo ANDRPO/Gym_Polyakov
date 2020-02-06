@@ -25,8 +25,10 @@ public class TorsoFragment extends Fragment {
     private List<String> urls = new ArrayList<>();
 
     public TorsoFragment(List<String> urls) {
-        for (int i = 18; i < 24; i++) {
-            this.urls.add(urls.get(i));
+        if (!urls.isEmpty()) {
+            for (int i = 18; i < 24; i++) {
+                this.urls.add(urls.get(i));
+            }
         }
     }
 

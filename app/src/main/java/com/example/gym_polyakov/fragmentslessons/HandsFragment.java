@@ -23,8 +23,10 @@ public class HandsFragment extends Fragment {
     private List<String> urls = new ArrayList<>();
 
     public HandsFragment(List<String> urls) {
-        for (int i = 0; i < 10; i++) {
-            this.urls.add(urls.get(i));
+        if (!urls.isEmpty()) {
+            for (int i = 0; i < 10; i++) {
+                this.urls.add(urls.get(i));
+            }
         }
     }
 

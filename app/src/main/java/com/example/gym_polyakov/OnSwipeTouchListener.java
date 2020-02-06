@@ -1,9 +1,12 @@
 package com.example.gym_polyakov;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 public class OnSwipeTouchListener implements View.OnTouchListener {
 
@@ -19,6 +22,7 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
     public void onSwipeDown(){
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public boolean onTouch(View v, MotionEvent event) {
         return gestureDetector.onTouchEvent(event);
     }
@@ -29,12 +33,12 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
         private static final int SWIPE_VELOCITY_THRESHOLD = 100;
 
         @Override
-        public boolean onDown(MotionEvent e) {
+        public boolean onDown(@NonNull MotionEvent e) {
             return true;
         }
 
         @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        public boolean onFling(@NonNull MotionEvent e1,@NonNull MotionEvent e2, float velocityX, float velocityY) {
             float distanceX = e2.getX() - e1.getX();
             float distanceY = e2.getY() - e1.getY();
             if (Math.abs(distanceY) > Math.abs(distanceX) && Math.abs(distanceY) > SWIPE_DISTANCE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {

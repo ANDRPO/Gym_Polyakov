@@ -24,6 +24,11 @@
         <activity
             android:name=".BottomNavigationMenu"
             android:label="@string/title_activity_bottom_navigation_menu" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".back_act" />
         <activity android:name=".SignUp" />
@@ -51,11 +56,6 @@
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
