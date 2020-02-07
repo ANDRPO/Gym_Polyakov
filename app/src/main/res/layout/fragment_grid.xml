@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,12 +19,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="540dp"
         android:layout_marginBottom="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="650dp"
+            android:layout_height="660dp"
             android:orientation="vertical"
             tools:ignore="ScrollViewSize">
 
@@ -36,13 +37,38 @@
                 android:padding="10dp"
                 android:paddingStart="15dp"
                 android:verticalSpacing="7dp" />
-            <ProgressBar
-                android:id="@+id/progress_bar"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:indeterminate="true"
-                android:progressDrawable="@drawable/cusom_progress_bar"/>
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:gravity="center">
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="@style/MyProgressBarTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="25dp"
+                    android:progressDrawable="@drawable/cusom_progress_bar"
+                    android:theme="@style/MyProgressBarTwo"
+                    android:max="60"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_procent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10%"
+                    android:textColor="#749DD2"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/progress_bar" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 

@@ -1,5 +1,8 @@
 package com.example.gym_polyakov.fragmentsplan;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,39 +21,54 @@ import com.example.gym_polyakov.R;
 
 public class Fragment_grid extends Fragment {
 
-    int type;
+    private int type;
+    private int progress;
 
     public Fragment_grid(int type){
         this.type = type;
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_grid, null);
         TextView title = view.findViewById(R.id.tv_grid_title);
+        TextView tv_procent = view.findViewById(R.id.tv_procent);
         ProgressBar progressBar = view.findViewById(R.id.progress_bar);
-        progressBar.setProgress(10);
+
 
         Log.e("TYPE", String.valueOf(type));
         switch (type){
             case 0:
                 title.setText("Push-up");
+                progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("PUSHUP", 0);
                 break;
             case 2:
                 title.setText("Sit-up");
+                progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("SITUP", 0);
                 break;
         }
+        progress = 58;
 
+        progressBar.setMax(60);
+        progressBar.setProgress(progress);
+        tv_procent.setText(procentProgress(progress) + "%");
+        if(progress >= 30){
+            tv_procent.setTextColor(Color.WHITE);
+        }
         Drawable draw = getResources().getDrawable(R.drawable.cusom_progress_bar);
-// set the drawable as progress drawable
         progressBar.setProgressDrawable(draw);
 
         GridView gridView = view.findViewById(R.id.gridview);
-        grid_view_adapter adapter = new grid_view_adapter(view.getContext(), R.layout.item_frid, 60);
+        grid_view_adapter adapter = new grid_view_adapter(view.getContext(), R.layout.item_frid, progress);
         gridView.setAdapter(adapter);
 
         return view;
+    }
+
+    private int procentProgress(int a){
+        return  (a*100)/60;
     }
 }

@@ -37,4 +37,9 @@
     <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
         <item name="android:textColor">#77A1D3</item>
     </style>
+
+    <style name="MyProgressBarTwo" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/cusom_progress_bar</item>
+        <item name="android:minWidth">200dp</item>
+    </style>
 </resources>
