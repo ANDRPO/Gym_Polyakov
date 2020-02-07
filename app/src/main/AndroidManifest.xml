@@ -17,13 +17,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities_plan.Activity_legs"/>
+        <activity android:name=".Activities_plan.Activity_legs" />
         <activity android:name=".Activities_plan.Activity_torso" />
         <activity android:name=".Activities_plan.Activity_spine" />
         <activity android:name=".Activities_plan.Activity_hands" />
         <activity
             android:name=".BottomNavigationMenu"
-            android:label="@string/title_activity_bottom_navigation_menu" >
+            android:label="@string/title_activity_bottom_navigation_menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,8 +55,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

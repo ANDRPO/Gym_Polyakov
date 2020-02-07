@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.gym_polyakov.OnSwipeTouchListener;
 import com.example.gym_polyakov.R;
+import com.example.gym_polyakov.fragmentsplan.Fragment_grid;
 
 public class PlanFragment extends Fragment {
 
@@ -39,7 +40,8 @@ public class PlanFragment extends Fragment {
         b_hands.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.e("PRESSED_HANDS", "TRUE");
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_grid(0)).commit();
             }
         });
 
@@ -64,7 +66,7 @@ public class PlanFragment extends Fragment {
             }
         });
 
-        b_hands.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
+       /* b_hands.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
             @Override
             public void onSwipeDown() {
                 if (swipeup[0]) {
@@ -187,7 +189,7 @@ public class PlanFragment extends Fragment {
                 Log.e("BALDESH", "UP");
             }
         });
-
+*/
 
 
         container_from_top_animate.setOnTouchListener(new OnSwipeTouchListener(getContext()) {

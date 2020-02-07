@@ -37,6 +37,7 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
             return true;
         }
 
+
         @Override
         public boolean onFling(@NonNull MotionEvent e1,@NonNull MotionEvent e2, float velocityX, float velocityY) {
             float distanceX = e2.getX() - e1.getX();
