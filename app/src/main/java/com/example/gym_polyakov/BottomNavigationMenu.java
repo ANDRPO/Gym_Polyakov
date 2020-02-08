@@ -26,19 +26,15 @@ public class BottomNavigationMenu extends AppCompatActivity {
 
                 switch (menuItem.getItemId()){
                     case R.id.navigation_plan:
-                        Log.e("itemID", menuItem.toString() + "  ASDANDASD  " + menuItem.getItemId());
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PlanFragment()).commit();
                         break;
                     case R.id.navigation_lessons:
-                        Log.e("itemID", menuItem.toString() + "  ASDANDASD  " + menuItem.getItemId());
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new LessonsFragment()).commit();
                         break;
                     case R.id.navigation_reports:
-                        Log.e("itemID", menuItem.toString() + "  ASDANDASD  " + menuItem.getItemId());
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ReportsFragment()).commit();
                         break;
                     case R.id.navigation_profile:
-                        Log.e("itemID", menuItem.toString() + "  ASDANDASD  " + menuItem.getItemId());
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileFragment()).commit();
                         break;
                 }

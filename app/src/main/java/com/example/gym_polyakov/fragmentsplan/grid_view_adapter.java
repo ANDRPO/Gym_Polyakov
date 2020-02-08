@@ -12,8 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.gym_polyakov.R;
-
-import java.util.List;
 import java.util.Map;
 
 public class grid_view_adapter extends ArrayAdapter<Map> {
@@ -43,12 +41,16 @@ public class grid_view_adapter extends ArrayAdapter<Map> {
         if(progress > position){
             b_number.setActivated(false);
             b_number.setClickable(false);
+            b_number.setFocusable(false);
+
             b_number.setTextColor(Color.WHITE);
             b_number.setBackground(view.getContext().getDrawable(R.drawable.disable_button_grid));
         }
         else if(progress < position){
             b_number.setActivated(false);
             b_number.setClickable(false);
+
+            b_number.setFocusable(false);
         }
         b_number.setText(String.valueOf(position+1));
         return view;

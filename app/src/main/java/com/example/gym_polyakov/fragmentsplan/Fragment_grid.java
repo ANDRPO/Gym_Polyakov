@@ -2,6 +2,7 @@ package com.example.gym_polyakov.fragmentsplan;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -22,7 +25,7 @@ import com.example.gym_polyakov.R;
 public class Fragment_grid extends Fragment {
 
     private int type;
-    private int progress;
+    private int progress = 0;
 
     public Fragment_grid(int type){
         this.type = type;
@@ -50,7 +53,6 @@ public class Fragment_grid extends Fragment {
                 progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("SITUP", 0);
                 break;
         }
-        progress = 58;
 
         progressBar.setMax(60);
         progressBar.setProgress(progress);
@@ -63,7 +65,21 @@ public class Fragment_grid extends Fragment {
 
         GridView gridView = view.findViewById(R.id.gridview);
         grid_view_adapter adapter = new grid_view_adapter(view.getContext(), R.layout.item_frid, progress);
+
         gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.e("Click", "Click");
+                switch (type){
+                    case 0:
+                        Log.e("REPLACE", "CASE0");
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_Push_Up()).commit();
+                        break;
+                }
+            }
+        });
 
         return view;
     }

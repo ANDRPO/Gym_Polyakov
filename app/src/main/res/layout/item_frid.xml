@@ -6,6 +6,8 @@
         android:id="@+id/button_grid"
         android:layout_width="45dp"
         android:layout_height="45dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:gravity="center"
         android:textAllCaps="false"
         android:textColor="#769CD2"
