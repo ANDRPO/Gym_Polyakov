@@ -19,6 +19,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.gym_polyakov.R;
 
@@ -53,7 +54,6 @@ public class Fragment_grid extends Fragment {
                 progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("SITUP", 0);
                 break;
         }
-
         progressBar.setMax(60);
         progressBar.setProgress(progress);
         tv_procent.setText(procentProgress(progress) + "%");
@@ -62,24 +62,10 @@ public class Fragment_grid extends Fragment {
         }
         Drawable draw = getResources().getDrawable(R.drawable.cusom_progress_bar);
         progressBar.setProgressDrawable(draw);
-
+        FragmentActivity fragment_for_adapter = getActivity();
         GridView gridView = view.findViewById(R.id.gridview);
-        grid_view_adapter adapter = new grid_view_adapter(view.getContext(), R.layout.item_frid, progress);
-
+        grid_view_adapter adapter = new grid_view_adapter(view.getContext(), R.layout.item_frid, progress, fragment_for_adapter, type);
         gridView.setAdapter(adapter);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Log.e("Click", "Click");
-                switch (type){
-                    case 0:
-                        Log.e("REPLACE", "CASE0");
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_Push_Up()).commit();
-                        break;
-                }
-            }
-        });
 
         return view;
     }

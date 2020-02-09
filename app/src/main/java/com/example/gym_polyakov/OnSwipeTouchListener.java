@@ -12,6 +12,7 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
 
     private final GestureDetector gestureDetector;
 
+
     public OnSwipeTouchListener(Context context) {
         gestureDetector = new GestureDetector(context, new GestureListener());
     }
@@ -26,6 +27,8 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent event) {
         return gestureDetector.onTouchEvent(event);
     }
+
+
 
     private final class GestureListener extends GestureDetector.SimpleOnGestureListener {
 
@@ -47,6 +50,7 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
                     onSwipeUp();
                 else if(distanceY > 0)
                     onSwipeDown();
+
                 return true;
             }
             return false;

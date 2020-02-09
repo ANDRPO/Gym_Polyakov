@@ -1,12 +1,14 @@
 package com.example.gym_polyakov.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -30,12 +32,21 @@ public class PlanFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_plan, null);
         final boolean[] swipeup = {false};
 
+
+
         container_from_top_animate = view.findViewById(R.id.view_container_profile_HSTL);
         container_from_visivility = view.findViewById(R.id.fragment_off);
         b_hands = view.findViewById(R.id.b_hands);
         b_spine = view.findViewById(R.id.b_spine);
         b_torso = view.findViewById(R.id.b_torso);
         b_legs = view.findViewById(R.id.b_legs);
+
+        ((TextView)view.findViewById(R.id.tv_plan_minutes)).setText(Return_shared("minutes")+ "\nMinutes");
+        ((TextView)view.findViewById(R.id.tv_plan_minutes_visible)).setText(Return_shared("minutes")+ "\nMinutes");
+        ((TextView)view.findViewById(R.id.tv_plan_training)).setText(Return_shared("score")+ "\nTraining");
+        ((TextView)view.findViewById(R.id.tv_plan_training_visible)).setText(Return_shared("score")+ "\nTraining");
+        ((TextView)view.findViewById(R.id.tv_plan_kcal)).setText(Return_shared("kcal")+ "\nKcal");
+        ((TextView)view.findViewById(R.id.tv_plan_kcal_visible)).setText(Return_shared("kcal") + "\nKcal");
 
         b_hands.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +66,7 @@ public class PlanFragment extends Fragment {
         b_torso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_grid(2)).commit();
             }
         });
 
@@ -223,5 +234,8 @@ public class PlanFragment extends Fragment {
             }
         });
         return view;
+    }
+    public int Return_shared(String a) {
+        return getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt(a, 0);
     }
 }

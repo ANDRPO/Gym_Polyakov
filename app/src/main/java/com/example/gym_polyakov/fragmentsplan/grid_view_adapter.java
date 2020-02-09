@@ -8,10 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.gym_polyakov.R;
+
 import java.util.Map;
 
 public class grid_view_adapter extends ArrayAdapter<Map> {
@@ -19,13 +23,17 @@ public class grid_view_adapter extends ArrayAdapter<Map> {
     private LayoutInflater inflater;
     private int item;
     private int progress;
+    private FragmentActivity fragmentActivity;
+    private int type;
 
 
-    public grid_view_adapter(@NonNull Context context, int resource, int progress) {
+    grid_view_adapter(@NonNull Context context, int resource, int progress, FragmentActivity fragmentActivity, int type) {
         super(context, resource);
         inflater = LayoutInflater.from(context);
         this.item = resource;
+        this.type = type;
         this.progress = progress;
+        this.fragmentActivity = fragmentActivity;
     }
 
     @Override
@@ -36,23 +44,31 @@ public class grid_view_adapter extends ArrayAdapter<Map> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        @SuppressLint("ViewHolder") View view = inflater.inflate(item, null);
-        Button b_number = view.findViewById(R.id.button_grid);
-        if(progress > position){
-            b_number.setActivated(false);
-            b_number.setClickable(false);
-            b_number.setFocusable(false);
+        @SuppressLint("ViewHolder") final View view = inflater.inflate(item, parent, false);
+        TextView tv_number = view.findViewById(R.id.tv_grid_item);
+        if (progress > position) {
 
-            b_number.setTextColor(Color.WHITE);
-            b_number.setBackground(view.getContext().getDrawable(R.drawable.disable_button_grid));
-        }
-        else if(progress < position){
-            b_number.setActivated(false);
-            b_number.setClickable(false);
+            tv_number.setTextColor(Color.WHITE);
+            tv_number.setBackground(view.getContext().getDrawable(R.drawable.disable_button_grid));
+        } else if (progress < position) {
+            tv_number.setBackground(view.getContext().getDrawable(R.drawable.disable_button_grid_2));
+        } else {
 
-            b_number.setFocusable(false);
+            tv_number.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch (type) {
+                        case 0:
+                            fragmentActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_Push_Up(progress)).commit();
+                            break;
+                        case 2:
+                            fragmentActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_Sit_Up(progress)).commit();
+                            break;
+                    }
+                }
+            });
         }
-        b_number.setText(String.valueOf(position+1));
+        tv_number.setText(String.valueOf(position + 1));
         return view;
     }
 }
