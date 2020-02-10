@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -26,6 +28,7 @@ import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
 
+    public static boolean switch_bool = false;
 
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,13 +39,22 @@ public class ProfileFragment extends Fragment {
         TextView tv_genderTRANS = view.findViewById(R.id.gender_profile);
         tv_weight.setText((int) getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getFloat("weight", 0) + "\nHeight");
         tv_height.setText((int) getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getFloat("height", 0) + "\nWeight");
+        View b_biomtric = view.findViewById(R.id.call_alert_edit_profile);
+        Button b_signout = view.findViewById(R.id.b_signout_profile);
+
         if (getActivity().getSharedPreferences("Settings",Context.MODE_PRIVATE).getBoolean("male", true)) {
             tv_genderTRANS.setText("female");
         }else{
             tv_genderTRANS.setText("male");
         }
-        View b_biomtric = view.findViewById(R.id.call_alert_edit_profile);
-        Button b_signout = view.findViewById(R.id.b_signout_profile);
+        Switch sw = view.findViewById(R.id.switch_profile);
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                switch_bool = isChecked;
+            }
+        });
+
         b_signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
