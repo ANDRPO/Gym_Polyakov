@@ -50,7 +50,6 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
                     onSwipeUp();
                 else if(distanceY > 0)
                     onSwipeDown();
-
                 return true;
             }
             return false;

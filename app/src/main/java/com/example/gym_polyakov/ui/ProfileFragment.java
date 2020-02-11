@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.example.gym_polyakov.Gym_service;
 import com.example.gym_polyakov.Network;
 import com.example.gym_polyakov.R;
 import com.example.gym_polyakov.SignIn;
@@ -37,10 +40,13 @@ public class ProfileFragment extends Fragment {
         TextView tv_weight = view.findViewById(R.id.tv_profile_weight);
         TextView tv_height = view.findViewById(R.id.tv_profile_height);
         TextView tv_genderTRANS = view.findViewById(R.id.gender_profile);
+
         tv_weight.setText((int) getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getFloat("weight", 0) + "\nHeight");
         tv_height.setText((int) getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getFloat("height", 0) + "\nWeight");
         View b_biomtric = view.findViewById(R.id.call_alert_edit_profile);
         Button b_signout = view.findViewById(R.id.b_signout_profile);
+
+
 
         if (getActivity().getSharedPreferences("Settings",Context.MODE_PRIVATE).getBoolean("male", true)) {
             tv_genderTRANS.setText("female");
@@ -48,10 +54,17 @@ public class ProfileFragment extends Fragment {
             tv_genderTRANS.setText("male");
         }
         Switch sw = view.findViewById(R.id.switch_profile);
+
+        if(getActivity().getApplicationContext().getSharedPreferences("Settings", Context.MODE_PRIVATE).getBoolean("checkN", false)){
+            sw.setChecked(true);
+        }
+
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                switch_bool = isChecked;
+                Log.e("CHECKED", String.valueOf(isChecked));
+                getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit().putBoolean("checkN", isChecked).apply();
+                getActivity().startService(new Intent(getActivity(), Gym_service.class));
             }
         });
 
