@@ -58,6 +58,7 @@ public class ProfileFragment extends Fragment {
 
                 numberPicker.setMinValue(0);
                 numberPicker.setMaxValue(300);
+                numberPicker.setValue(Integer.parseInt(tv_TR.getText().toString().replace("sec", "")));
 
                 builder.setView(numberPicker);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
