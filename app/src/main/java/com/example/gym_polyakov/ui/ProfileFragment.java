@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,37 @@ public class ProfileFragment extends Fragment {
         tv_height.setText((int) getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getFloat("height", 0) + "\nWeight");
         View b_biomtric = view.findViewById(R.id.call_alert_edit_profile);
         Button b_signout = view.findViewById(R.id.b_signout_profile);
+
+        final TextView tv_TR = view.findViewById(R.id.tv_training_rest);
+        tv_TR.setText(getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("TRAINING_TIME", 0) + "sec");
+        View button_trining = view.findViewById(R.id.training_rest);
+        button_trining.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                final NumberPicker numberPicker = new NumberPicker(getContext());
+
+                numberPicker.setMinValue(0);
+                numberPicker.setMaxValue(300);
+
+                builder.setView(numberPicker);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit().putInt("TRAINING_TIME", numberPicker.getValue()).apply();
+                        tv_TR.setText(getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("TRAINING_TIME", 0) + "sec");
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.setCanceledOnTouchOutside(true);
+                alertDialog.show();
+            }
+        });
 
 
 

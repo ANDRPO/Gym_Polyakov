@@ -27,26 +27,22 @@
         app:tabSelectedTextColor="@android:color/white">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_Hands"
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
             android:text="Hands" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_Spine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Spine" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_Torso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Torso" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_Legs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Legs" />

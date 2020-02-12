@@ -2,6 +2,7 @@ package com.example.gym_polyakov.fragmentsplan;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.gym_polyakov.MyServiceTR;
 import com.example.gym_polyakov.R;
 import com.example.gym_polyakov.ui.PlanFragment;
 
@@ -91,6 +94,8 @@ public class Fragment_Sit_Up extends Fragment {
                                 Editor_shared("kcal", kcal);
                                 Editor_shared("score", progress - count);
                                 Editor_shared("SITUP", progress);
+                                getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit().putInt("TRAINING_CHECK_TIME", getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("TRAINING_TIME", 0)).apply();
+                                getActivity().startService(new Intent(getContext(), MyServiceTR.class));
                                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PlanFragment()).commit();
                             }
                         });

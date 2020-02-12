@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,40 +21,54 @@ import com.example.gym_polyakov.fragmentsplan.Fragment_grid;
 
 public class PlanFragment extends Fragment {
 
-    private View container_from_top_animate;
     private View container_from_visivility;
     private ImageView b_hands;
     private ImageView b_spine;
     private ImageView b_torso;
     private ImageView b_legs;
+    private float VISIBILITY_PLAN;
 
     @SuppressLint("ClickableViewAccessibility")
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_plan, null);
-        final boolean[] swipeup = {false};
 
-
-
-        container_from_top_animate = view.findViewById(R.id.view_container_profile_HSTL);
         container_from_visivility = view.findViewById(R.id.fragment_off);
         b_hands = view.findViewById(R.id.b_hands);
         b_spine = view.findViewById(R.id.b_spine);
         b_torso = view.findViewById(R.id.b_torso);
         b_legs = view.findViewById(R.id.b_legs);
 
-        ((TextView)view.findViewById(R.id.tv_plan_minutes)).setText(Return_shared("minutes")+ "\nMinutes");
-        ((TextView)view.findViewById(R.id.tv_plan_minutes_visible)).setText(Return_shared("minutes")+ "\nMinutes");
-        ((TextView)view.findViewById(R.id.tv_plan_training)).setText(Return_shared("score")+ "\nTraining");
-        ((TextView)view.findViewById(R.id.tv_plan_training_visible)).setText(Return_shared("score")+ "\nTraining");
-        ((TextView)view.findViewById(R.id.tv_plan_kcal)).setText(Return_shared("kcal")+ "\nKcal");
-        ((TextView)view.findViewById(R.id.tv_plan_kcal_visible)).setText(Return_shared("kcal") + "\nKcal");
+        ScrollView scrollView = view.findViewById(R.id.plan_scrollview);
+        scrollView.setVerticalScrollBarEnabled(false);
+        scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                Log.e("ScrollX", String.valueOf(scrollX));
+                Log.e("ScrollY", String.valueOf(scrollY));
+                VISIBILITY_PLAN = (((float) scrollY * 100) / 19800);
+                Log.e("VISIBILITY", String.valueOf(VISIBILITY_PLAN));
+                container_from_visivility.setAlpha(1 - VISIBILITY_PLAN);
+
+
+            }
+        });
+
+        ((TextView) view.findViewById(R.id.tv_plan_minutes)).setText(Return_shared("minutes") + "\nMinutes");
+        ((TextView) view.findViewById(R.id.tv_plan_minutes_visible)).setText(Return_shared("minutes") + "\nMinutes");
+        ((TextView) view.findViewById(R.id.tv_plan_training)).setText(Return_shared("score") + "\nTraining");
+        ((TextView) view.findViewById(R.id.tv_plan_training_visible)).setText(Return_shared("score") + "\nTraining");
+        ((TextView) view.findViewById(R.id.tv_plan_kcal)).setText(Return_shared("kcal") + "\nKcal");
+        ((TextView) view.findViewById(R.id.tv_plan_kcal_visible)).setText(Return_shared("kcal") + "\nKcal");
 
         b_hands.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.e("PRESSED_HANDS", "TRUE");
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_grid(0)).commit();
+                if (getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("TRAINING_CHECK_TIME", 0) == 0)
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_grid(0)).commit();
+                else
+                    Toast.makeText(getActivity(), "Время ещё не пришло", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -66,7 +82,11 @@ public class PlanFragment extends Fragment {
         b_torso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_grid(2)).commit();
+                if (getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("TRAINING_CHECK_TIME", 0) == 0) {
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_grid(2)).commit();
+                } else {
+                    Toast.makeText(getActivity(), "Время ещё не пришло", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -76,165 +96,9 @@ public class PlanFragment extends Fragment {
 
             }
         });
-
-       /* b_hands.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
-            @Override
-            public void onSwipeDown() {
-                if (swipeup[0]) {
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 190.0) {
-                        swipeup[0] = false;
-                        container_from_top_animate.animate().translationYBy(200).setDuration(400);
-                        container_from_visivility.animate().alpha(1).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "DOWN");
-            }
-
-            @Override
-            public void onSwipeUp() {
-                if (!swipeup[0]) {
-
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 390.0) {
-                        swipeup[0] = true;
-                        container_from_top_animate.animate().translationYBy(-200).setDuration(400);
-                        container_from_visivility.animate().alpha(0).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "UP");
-            }
-        });
-
-        b_spine.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
-            @Override
-            public void onSwipeDown() {
-                if (swipeup[0]) {
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 190.0) {
-                        swipeup[0] = false;
-                        container_from_top_animate.animate().translationYBy(200).setDuration(400);
-                        container_from_visivility.animate().alpha(1).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "DOWN");
-            }
-
-            @Override
-            public void onSwipeUp() {
-                if (!swipeup[0]) {
-
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 390.0) {
-                        swipeup[0] = true;
-                        container_from_top_animate.animate().translationYBy(-200).setDuration(400);
-                        container_from_visivility.animate().alpha(0).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "UP");
-            }
-        });
-
-        b_torso.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
-            @Override
-            public void onSwipeDown() {
-                if (swipeup[0]) {
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 190.0) {
-                        swipeup[0] = false;
-                        container_from_top_animate.animate().translationYBy(200).setDuration(400);
-                        container_from_visivility.animate().alpha(1).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "DOWN");
-            }
-
-            @Override
-            public void onSwipeUp() {
-                if (!swipeup[0]) {
-
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 390.0) {
-                        swipeup[0] = true;
-                        container_from_top_animate.animate().translationYBy(-200).setDuration(400);
-                        container_from_visivility.animate().alpha(0).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "UP");
-            }
-        });
-
-        b_legs.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
-            @Override
-            public void onSwipeDown() {
-                if (swipeup[0]) {
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 190.0) {
-                        swipeup[0] = false;
-                        container_from_top_animate.animate().translationYBy(200).setDuration(400);
-                        container_from_visivility.animate().alpha(1).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "DOWN");
-            }
-
-            @Override
-            public void onSwipeUp() {
-                if (!swipeup[0]) {
-
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 390.0) {
-                        swipeup[0] = true;
-                        container_from_top_animate.animate().translationYBy(-200).setDuration(400);
-                        container_from_visivility.animate().alpha(0).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "UP");
-            }
-        });
-*/
-
-
-        container_from_top_animate.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
-            @Override
-            public void onSwipeDown() {
-                if (swipeup[0]) {
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 190.0) {
-                        swipeup[0] = false;
-                        container_from_top_animate.animate().translationYBy(200).setDuration(400);
-                        container_from_visivility.animate().alpha(1).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "DOWN");
-            }
-
-            @Override
-            public void onSwipeUp() {
-                if (!swipeup[0]) {
-
-                    Log.e("POSITION_X", String.valueOf(container_from_top_animate.getX()));
-                    Log.e("POSITION_Y", String.valueOf(container_from_top_animate.getY()));
-                    if (container_from_top_animate.getY() == 390.0) {
-                        swipeup[0] = true;
-                        container_from_top_animate.animate().translationYBy(-200).setDuration(400);
-                        container_from_visivility.animate().alpha(0).setDuration(500);
-                    }
-                }
-                Log.e("BALDESH", "UP");
-            }
-        });
         return view;
     }
+
     public int Return_shared(String a) {
         return getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt(a, 0);
     }
