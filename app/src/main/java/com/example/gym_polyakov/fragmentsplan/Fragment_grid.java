@@ -49,6 +49,10 @@ public class Fragment_grid extends Fragment {
                 title.setText("Push-up");
                 progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("PUSHUP", 0);
                 break;
+            case 1:
+                title.setText("Spine");
+                progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("SPINE", 0);
+                break;
             case 2:
                 title.setText("Sit-up");
                 progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("SITUP", 0);

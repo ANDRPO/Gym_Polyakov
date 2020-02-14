@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.gym_polyakov.OnSwipeTouchListener;
 import com.example.gym_polyakov.R;
+import com.example.gym_polyakov.fragmentsplan.Fragment_Spine;
 import com.example.gym_polyakov.fragmentsplan.Fragment_grid;
 
 public class PlanFragment extends Fragment {
@@ -75,7 +76,11 @@ public class PlanFragment extends Fragment {
         b_spine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.e("PRESSED_SPINE", "TRUE");
+                if (getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("TRAINING_CHECK_TIME", 0) == 0)
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_grid(1)).commit();
+                else
+                    Toast.makeText(getActivity(), "Время ещё не пришло", Toast.LENGTH_SHORT).show();
             }
         });
 

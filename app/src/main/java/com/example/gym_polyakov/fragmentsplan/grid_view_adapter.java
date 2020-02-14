@@ -64,6 +64,9 @@ public class grid_view_adapter extends ArrayAdapter<Map> {
                         case 0:
                             fragmentActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_Push_Up(progress)).commit();
                             break;
+                        case 1:
+                            fragmentActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_Spine(progress)).commit();
+                            break;
                         case 2:
                             fragmentActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_Sit_Up(progress)).commit();
                             break;
