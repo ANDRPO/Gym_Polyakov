@@ -92,7 +92,7 @@ public class Fragment_Push_Up extends Fragment {
                                 Editor_shared("minutes", (int) (getTimeChronometer(chronometer) / 60000));
                                 Editor_shared("kcal", kcal);
                                 Editor_shared("score", progress - count);
-                                Editor_shared("PUSHUP", progress);
+                                Editor_shared_push_up("PUSHUP", progress);
                                 getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit().putInt("TRAINING_CHECK_TIME", getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("TRAINING_TIME", 0)).apply();
                                 getActivity().startService(new Intent(getContext(), MyServiceTR.class));
                                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PlanFragment()).commit();
@@ -117,5 +117,8 @@ public class Fragment_Push_Up extends Fragment {
 
     public void Editor_shared(String a, int b) {
         getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit().putInt(a, Return_shared(a) + b).apply();
+    }
+    public void Editor_shared_push_up(String a, int b) {
+        getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit().putInt(a, b).apply();
     }
 }

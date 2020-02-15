@@ -52,6 +52,7 @@ public class Fragment_grid extends Fragment {
             case 1:
                 title.setText("Spine");
                 progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("SPINE", 0);
+                Log.e("PROGRESS_GRID", String.valueOf(progress));
                 break;
             case 2:
                 title.setText("Sit-up");
