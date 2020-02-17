@@ -58,6 +58,10 @@ public class Fragment_grid extends Fragment {
                 title.setText("Sit-up");
                 progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("SITUP", 0);
                 break;
+            case 3:
+                title.setText("Legs");
+                progress = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt("LEGS", 0);
+                break;
         }
         progressBar.setMax(60);
         progressBar.setProgress(progress);

@@ -70,6 +70,9 @@ public class grid_view_adapter extends ArrayAdapter<Map> {
                         case 2:
                             fragmentActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_Sit_Up(progress)).commit();
                             break;
+                        case 3:
+                            fragmentActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new Fragment_Legs(progress)).commit();
+                            break;
                     }
                 }
             });
