@@ -35,8 +35,6 @@ public class My_Custom_Adapter extends ArrayAdapter<String> {
         View view = inflater.inflate(item,  null);
         ImageView imageView = view.findViewById(R.id.image_in_list);
         Picasso.get().load("https://img.youtube.com/vi" + list.get(position).substring(17).concat("/mqdefault.jpg").replace("\"","")).into(imageView);
-        Log.e("LESSONS URLS", list.get(position).substring(17));
-        Log.e("LESSONS IMAGE", "https://img.youtube.com/vi" + list.get(position).substring(17).concat("/mqdefault.jpg").replace("\"", ""));
         return view;
     }
 

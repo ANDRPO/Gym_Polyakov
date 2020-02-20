@@ -2,9 +2,18 @@ package com.example.gym_polyakov;
 
 import com.google.gson.JsonElement;
 
+import java.io.File;
+
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Api {
@@ -39,4 +48,20 @@ public interface Api {
             @Query("weight") String Weight,
             @Query("height") String Height);
 
+    @POST("gpx")
+    Call<JsonElement> API_outgpx(
+           @Body RequestBody body);
+
+    @POST("getgpx")
+    Call<JsonElement> API_getgpx(
+            @Query("token") String token);
+
+    @POST("deletegpx")
+    Call<JsonElement> API_deletegpx(
+            @Query("token") String Token,
+            @Query("run_id") String Run_id);
+
+    @GET("{url}")
+    Call<JsonElement> API_getfile(
+            @Path("url") String url_text);
 }
