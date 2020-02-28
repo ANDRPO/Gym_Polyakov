@@ -1,5 +1,6 @@
 package com.example.gym_polyakov;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -25,6 +26,7 @@ public class PageAdapter extends FragmentPagerAdapter {
         this.Urls_list = Urls_list;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -37,6 +39,7 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 3:
                 return new LegsFragment(Urls_list);
             default:
+                //noinspection ConstantConditions
                 return null;
         }
     }

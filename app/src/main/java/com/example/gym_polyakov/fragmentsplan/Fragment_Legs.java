@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -67,7 +68,7 @@ public class Fragment_Legs extends Fragment implements LocationListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_legs_plan, container, false);
+        final View view = inflater.inflate(R.layout.fragment_legs_plan, container, false);
         tv_distance = view.findViewById(R.id.distance);
         chronometer = view.findViewById(R.id.chronometer_run);
         b_stop = view.findViewById(R.id.b_stop_legs);
@@ -110,13 +111,16 @@ public class Fragment_Legs extends Fragment implements LocationListener {
     }
 
     @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) { }
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+    }
 
     @Override
-    public void onProviderEnabled(String provider) { }
+    public void onProviderEnabled(String provider) {
+    }
 
     @Override
-    public void onProviderDisabled(String provider) { }
+    public void onProviderDisabled(String provider) {
+    }
 
     private int Return_shared(String a) {
         return getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).getInt(a, 0);
@@ -130,9 +134,9 @@ public class Fragment_Legs extends Fragment implements LocationListener {
         return SystemClock.elapsedRealtime() - chronometer.getBase();
     }
 
-    private void getFileSavegpx(){
+    private void getFileSavegpx() {
         try {
-            FileInputStream fileInput =getActivity().openFileInput(FILE_SAVEGPX);
+            FileInputStream fileInput = getActivity().openFileInput(FILE_SAVEGPX);
             InputStreamReader reader = new InputStreamReader(fileInput);
             BufferedReader buffer = new BufferedReader(reader);
             StringBuffer strBuffer = new StringBuffer();
@@ -180,6 +184,8 @@ public class Fragment_Legs extends Fragment implements LocationListener {
                 }
 
             });
+            getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.nav_host_fragment, new Fragment_RunList()).commit();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -48,6 +48,7 @@
             android:layout_height="35dp"
             android:singleLine="true"
             android:paddingStart="8dp"
+            android:text="andrpol"
             android:textSize="24sp"
             android:hint="Ivanov"
             android:layout_marginTop="6dp"
@@ -75,6 +76,7 @@
         <EditText
             android:id="@+id/et_signin_password"
             android:layout_width="220dp"
+            android:text="qwe"
             android:layout_height="35dp"
             android:paddingStart="8dp"
             android:textSize="24sp"

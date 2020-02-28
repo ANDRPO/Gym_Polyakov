@@ -5,11 +5,11 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#1592E6</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#00FFFFFF</item>
         <item name="android:textCursorDrawable">@color/Black</item>
         <item name="android:fontFamily">@font/astroneer</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:screenOrientation">portrait</item>
     </style>
 
     <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
@@ -42,4 +42,14 @@
         <item name="android:progressDrawable">@drawable/cusom_progress_bar</item>
         <item name="android:minWidth">200dp</item>
     </style>
+
+
+    <style name="CalenderViewCustom" parent="Theme.AppCompat.DayNight">
+        <item name="colorAccent">@color/colorBlue</item>
+    </style>
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/Black</item>
+    </style>
+
 </resources>

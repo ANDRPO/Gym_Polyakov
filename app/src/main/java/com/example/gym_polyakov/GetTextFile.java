@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GetTextFile {
     private static GetTextFile mInstance;
     private Retrofit retrofit;
-    private String BASE_URL = "";
+    private String BASE_URL = "http://gym.areas.su/up/";
 
     public static GetTextFile getInstance(){
         if(mInstance == null){

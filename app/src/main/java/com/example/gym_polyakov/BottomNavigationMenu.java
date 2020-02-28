@@ -2,19 +2,16 @@ package com.example.gym_polyakov;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-
-import com.example.gym_polyakov.ui.LessonsFragment;
-import com.example.gym_polyakov.ui.ProfileFragment;
-import com.example.gym_polyakov.ui.PlanFragment;
-import com.example.gym_polyakov.ui.ReportsFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+
+import com.example.gym_polyakov.ui.LessonsFragment;
+import com.example.gym_polyakov.ui.PlanFragment;
+import com.example.gym_polyakov.ui.ProfileFragment;
+import com.example.gym_polyakov.ui.ReportsFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomNavigationMenu extends AppCompatActivity {
     @Override
